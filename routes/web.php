@@ -12,13 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('templates.home');
 });
 Route::get('redirect',function(){
     alert()->success('Success Message', 'Optional Title');
     return redirect('/');
 
 });
-Route::get('home', function () {
-    return view('templates.home');
-});
+
