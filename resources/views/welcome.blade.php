@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
+        
         <!-- Fonts -->
+        <link href="{{URL::asset('css/sweetalert.css')}}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
@@ -88,8 +89,12 @@
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="redirect">GitHub</a>
                 </div>
             </div>
         </div>
     </body>
+    <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
+ 
+    @include('sweet::alert')
 </html>

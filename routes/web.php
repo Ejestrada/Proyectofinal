@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('redirect',function(){
+    alert()->success('Success Message', 'Optional Title');
+    return redirect('/');
+
+});
