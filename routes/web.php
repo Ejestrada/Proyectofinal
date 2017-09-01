@@ -19,3 +19,6 @@ Route::get('redirect',function(){
     return redirect('/');
 
 });
+Route::get('home', function () {
+    return view('templates.home');
+});
