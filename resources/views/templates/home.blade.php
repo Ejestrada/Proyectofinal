@@ -13,6 +13,7 @@
     
     <link rel="icon" href="{{URL::asset('Images/mphoto.png')}}" sizes="32x32">
     <link href="{{URL::asset('css/prism.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/sweetalert.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/ghpages-materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -162,6 +163,7 @@
     
 </body>
     <!--  Scripts-->
+    <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
     <script src="{{URL::asset('js/jquery-3.2.1.min.js')}}"></script>
     <script src="{{URL::asset('js/jquery.timeago.min.js')}}"></script>
     <script src="{{URL::asset('js/prism.js')}}"></script>
@@ -169,5 +171,6 @@
     <script src="{{URL::asset('jade/search.js')}}"></script>
     <script src="{{URL::asset('bin/materialize.js')}}"></script>
     <script src="{{URL::asset('js/init.js')}}"></script>
+    
 
 </html>

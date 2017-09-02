@@ -12,11 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('templates.home');
+    return view('welcome');
 });
+
+Route::resource('roles','RangoEdadeController');
+
+Route::resource('tarifas','TarifaController');
+
 Route::get('redirect',function(){
     alert()->success('Success Message', 'Optional Title');
-    return redirect('/');
+    return back();
 
 });
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\tarifa;
+use App\tipo_visitantes;
+use App\rango_edade;
 use Illuminate\Http\Request;
 
 class TarifaController extends Controller
@@ -13,8 +15,18 @@ class TarifaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $result = tarifa::join('rango_edades', 'tarifas.rango', '=', 'rango_edades.id')
+        ->join('tipo_visitantes', 'tarifas.tipov', '=', 'tipo_visitantes.id')
+        ->select('tarifas.id',
+        'tarifas.activo',
+        'tarifas.monto',
+        'tarifas.inicio',
+        'tarifas.final',
+        'rango_edades.nombre as rangoa',
+        'tipo_visitantes.nombre as visitante')
+        ->orderBy('tarifas.id','ASC')
+       ->get();
+       return view('tarifas.index',compact('result'));
     }
 
     /**

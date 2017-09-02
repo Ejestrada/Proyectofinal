@@ -5,81 +5,51 @@ namespace App\Http\Controllers;
 use App\rango_edade;
 use Illuminate\Http\Request;
 
+
 class RangoEdadeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\rango_edade  $rango_edade
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function index(){
+        $rangos = rango_edade::orderBy('id','DESC')->get();
+        return view('rangos.index',compact('rangos'));}
+    
     public function show(rango_edade $rango_edade)
     {
-        //
+        return "hola mundo";
+    }
+    public function destroy($id)
+    {
+        $rango = rango_edade::find($id);
+        $rango -> delete();
+        alert()->success('Rango', 'Eliminado');
+        return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\rango_edade  $rango_edade
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(rango_edade $rango_edade)
+    public function edit($id)
     {
-        //
+        $rol = rango_edade::find($id);
+        return view('roles.edit', compact('rol'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\rango_edade  $rango_edade
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, rango_edade $rango_edade)
+    
+    public function create()
     {
-        //
+        return view('tarifas.create'); 
     }
+    
+    public function store(Request $request)
+    {
+        $rango = new rango_edade;
+        $rango->nombre = $request->nombre;
+        $rango->save();
+        return redirect()->route('rangos.index')->with('info','Rol ingresado');
+    }
+    public function update(Request $request, $id)
+    {
+        $rango = rango_edade::find($id);
+        $rango->nombre = $request->nombre;
+        $rango->save();
+        return redirect()->route('rangos.index')->with('info','Tarifa Actualizada');}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\rango_edade  $rango_edade
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(rango_edade $rango_edade)
-    {
-        //
-    }
+    
 }
