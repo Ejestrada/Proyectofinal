@@ -25,7 +25,7 @@ class TarifaController extends Controller
         'rango_edades.nombre as rangoa',
         'tipo_visitantes.nombre as visitante')
         ->orderBy('tarifas.id','ASC')
-       ->get();
+        ->get();
        return view('tarifas.index',compact('result'));
     }
 
