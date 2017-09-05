@@ -7,79 +7,58 @@ use Illuminate\Http\Request;
 
 class TipoVisitantesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $visitantes = tipo_visitantes::orderBy('id','ASC')->get();
+        return view('visitantes.index',compact('visitantes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        return view('visitantes.create'); 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $visitante = new tipo_visitantes;
+        $visitante->nombre = $request->uname;
+        $visitante->save();
+        alert()->success('Visitante', 'Creado');
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\tipo_visitantes  $tipo_visitantes
-     * @return \Illuminate\Http\Response
-     */
-    public function show(tipo_visitantes $tipo_visitantes)
+    
+    public function show()
     {
-        //
+        return redirect()->route('visitantes.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\tipo_visitantes  $tipo_visitantes
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(tipo_visitantes $tipo_visitantes)
+    
+    public function edit($id)
     {
-        //
+        $visitante = tipo_visitantes::find($id);
+        return view('visitantes.edit', compact('visitante'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\tipo_visitantes  $tipo_visitantes
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, tipo_visitantes $tipo_visitantes)
+    
+    public function update(Request $request, $id)
     {
-        //
+        $visitante = tipo_visitantes::find($id);
+        $visitante->nombre = $request->name;
+        $visitante->save();
+        alert()->success('Rango', 'Actualizado');
+        return redirect()->route('visitantes.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\tipo_visitantes  $tipo_visitantes
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(tipo_visitantes $tipo_visitantes)
+   
+    public function destroy($id)
     {
-        //
+        $visitante = tipo_visitantes::find($id);
+        $visitante -> delete();
+        alert()->success('Rango', 'Eliminado');
+        return back();
     }
 }

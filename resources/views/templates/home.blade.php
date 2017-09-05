@@ -85,8 +85,10 @@
       <li class="bold"><a class="collapsible-header  waves-effect waves-sbx"><i class="medium material-icons  blue-grey-text text-darken-4">theaters</i>Boletos</a>
         <div class="collapsible-body">
           <ul>
-          <li><a class="waves-effect waves-sbx" href="badges.html">Tarifas</a></li>
-          <li><a class="waves-effect waves-sbx" href="badges.html">Categorias</a></li>
+          <li><a class="waves-effect waves-sbx" href="{{url('/tarifas')}}">Tarifas</a></li>
+          <li><a class="waves-effect waves-sbx" href="{{url('/visitantes')}}">Categorias</a></li>
+          <li><a class="waves-effect waves-sbx" href="{{url('/rangos')}}">Rangos</a></li>
+         
           </ul>
         </div>
       </li>

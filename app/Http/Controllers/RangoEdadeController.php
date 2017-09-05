@@ -9,13 +9,15 @@ use Illuminate\Http\Request;
 class RangoEdadeController extends Controller
 {
     
-    public function index(){
-        $rangos = rango_edade::orderBy('id','DESC')->get();
-        return view('rangos.index',compact('rangos'));}
-    
-    public function show(rango_edade $rango_edade)
+    public function index()
     {
-        return "hola mundo";
+        $rangos = rango_edade::orderBy('id','DESC')->get();
+        return view('rangos.index',compact('rangos'));
+    }
+    
+    public function show()
+    {
+        return redirect()->route('rangos.index');
     }
     public function destroy($id)
     {
@@ -27,29 +29,32 @@ class RangoEdadeController extends Controller
 
     public function edit($id)
     {
-        $rol = rango_edade::find($id);
-        return view('roles.edit', compact('rol'));
+        $rango = rango_edade::find($id);
+        return view('rangos.edit', compact('rango'));
     }
 
     
     public function create()
     {
-        return view('tarifas.create'); 
+        return view('rangos.create'); 
     }
     
     public function store(Request $request)
     {
         $rango = new rango_edade;
-        $rango->nombre = $request->nombre;
+        $rango->nombre = $request->uname;
         $rango->save();
-        return redirect()->route('rangos.index')->with('info','Rol ingresado');
+        alert()->success('Rango', 'Creado');
+        return back();
     }
     public function update(Request $request, $id)
     {
         $rango = rango_edade::find($id);
-        $rango->nombre = $request->nombre;
+        $rango->nombre = $request->name;
         $rango->save();
-        return redirect()->route('rangos.index')->with('info','Tarifa Actualizada');}
+        alert()->success('Rango', 'Actualizado');
+        return redirect()->route('rangos.index');
+    }
 
     
 }

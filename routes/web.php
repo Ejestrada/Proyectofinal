@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('templates.home');
 });
 
-Route::resource('roles','RangoEdadeController');
+Route::resource('rangos','RangoEdadeController');
+Route::resource('visitantes','TipoVisitantesController');
 
 Route::resource('tarifas','TarifaController');
 

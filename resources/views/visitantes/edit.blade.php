@@ -5,11 +5,11 @@
     <div class="row">
         <div class="left"><br>
             <h5 class="light">Rangos</h5>
-            <p class="caption">Nombre actual: {{$rango->nombre}}</p>
+            <p class="caption">Nombre actual: {{$visitante->nombre}}</p>
         </div>
         
         <div class="right"><br>
-            <a href="{{route('rangos.index')}}" 
+            <a href="{{route('visitantes.index')}}" 
             class="modal-trigger btn-floating tooltipped btn-large waves-effect waves-light  light-blue accent-4" 
             data-position="bottom" data-delay="50" data-tooltip="Regresar">
             <i class="material-icons">arrow_back</i></a>
@@ -18,12 +18,12 @@
 
     <div class="row">
     
-    <form method="POST" action="{{route('rangos.update',$rango->id)}}">
+    <form method="POST" action="{{route('visitantes.update',$visitante->id)}}">
     <input name="_method" type="hidden" value="PUT">
         {!! csrf_field() !!}  
         <div class="row">
         <div class="input-field col s6">
-          <input placeholder="{{$rango->nombre}}" id="first_name" name="name" type="text" class="validate">
+          <input placeholder="{{$visitante->nombre}}" id="first_name" name="name" type="text" class="validate">
           <label for="first_name">Nombre</label>
         </div>
         <div class="input-field col s6">

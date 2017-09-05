@@ -4,7 +4,7 @@
 <div class="container">
 <div class="row">
     <div class="left"><br>
-      <h5 class="light">Rangos</h5>
+      <h5 class="light">Categoria de Visitantes</h5>
     </div>
     <div class="right"><br>
       <a href="#modal2" class="modal-trigger btn-floating tooltipped btn-large waves-effect waves-light  light-blue accent-4" data-position="bottom" data-delay="50" data-tooltip="Agregar"><i class="material-icons">add</i></a>
@@ -26,22 +26,22 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($rangos as $rango)
+          @foreach ($visitantes as $v)
             <tr>
-            <td>{{$rango->id}}</td>
-            <td>{{$rango->nombre}}</td>
-            <td>{{$rango->created_at->format('d/m/Y')}}</td>
-            <td>{{$rango->updated_at->format('d/m/Y')}}</td>
+            <td>{{$v->id}}</td>
+            <td>{{$v->nombre}}</td>
+            <td>{{$v->created_at->format('d/m/Y')}}</td>
+            <td>{{$v->updated_at->format('d/m/Y')}}</td>
             <td>
-            <a class="modal-trigger" href="{{route('rangos.edit',$rango->id,$rango->nombre)}}"><span class=" new badge blue" data-badge-caption="Editar"></span></a>
+            <a class="modal-trigger" href="{{route('visitantes.edit',$v->id,$v->nombre)}}"><span class=" new badge blue" data-badge-caption="Editar"></span></a>
             <a class="modal-trigger" href="#modal1"><span class="new badge red"  data-badge-caption="Eliminar"></span></a>
             </td>
-              <form action="{{route('rangos.destroy',$rango->id)}}" method="POST">
+            <form action="{{route('visitantes.destroy',$v->id)}}" method="POST">
                 {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
                     <div id="modal1" class="modal">
                       <div class="modal-content">
-                        <h4 class="center-align">Desea eliminar rango ?</h4>
+                        <h4 class="center-align">Desea eliminar la categoria ?</h4>
                         <center> <i class="center-align medium material-icons">error_outline</i></center>
                         <p class="center-align">Nota: los cambios no pueden deshacerse </p>
                       </div>
@@ -51,6 +51,7 @@
                       </div>
                     </div>
               </form>
+              
             </tr>
           @endforeach
         </tbody>
@@ -61,12 +62,12 @@
 
 <div id="modal2" class="modal">
   <div class="modal-content">
-    <h4 class="center-align">Rango de Edades</h4>
-    <form class="col s12" method="POST" action="{{route('rangos.store')}}">
+    <h4 class="center-align">Categoria de Visitantes</h4>
+    <form class="col s12" method="POST" action="{{route('visitantes.store')}}">
       {{ csrf_field() }}
       <div class="row">
         <div class="input-field col s12">
-          <i class="material-icons prefix">class</i>
+          <i class="material-icons prefix">group_add</i>
           <input name="uname" id="icon_prefix" type="text" class="validate">
           <label for="icon_prefix">Nombre</label>
         </div>
@@ -79,10 +80,11 @@
 </div>
 
 
+
+
     
 </div></div>
 <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
 @include('sweet::alert')
 @endsection
-
 

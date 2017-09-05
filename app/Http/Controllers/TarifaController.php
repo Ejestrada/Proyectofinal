@@ -29,14 +29,12 @@ class TarifaController extends Controller
        return view('tarifas.index',compact('result'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        $visitante = tipo_visitantes::all();
+        $rango     = rango_edade::all();
+        return view('tarifas.create',['visitante'=>$visitante],['rango'=>$rango]);
     }
 
     /**
