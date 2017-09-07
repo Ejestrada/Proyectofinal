@@ -49,7 +49,7 @@ class TipoVisitantesController extends Controller
         $visitante = tipo_visitantes::find($id);
         $visitante->nombre = $request->name;
         $visitante->save();
-        alert()->success('Rango', 'Actualizado');
+        alert()->success('Visitante', 'Actualizado');
         return redirect()->route('visitantes.index');
     }
 
@@ -58,7 +58,7 @@ class TipoVisitantesController extends Controller
     {
         $visitante = tipo_visitantes::find($id);
         $visitante -> delete();
-        alert()->success('Rango', 'Eliminado');
+        alert()->success('Visitante', 'Eliminado');
         return back();
     }
 }

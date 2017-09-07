@@ -45,7 +45,16 @@ class TarifaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tarifa = new tarifa;
+        $tarifa->activo = true;
+        $tarifa->monto  = $request->uname;
+        $tarifa->inicio = $request->date;
+        $tarifa->final  = $request->datetwo;
+        $tarifa->rango  = $request->rango;
+        $tarifa->tipov  = $request->visitante;
+        $tarifa->save();
+        alert()->success('Creada', 'Tarifa')->persistent("Cerrar");
+        return redirect()->route('tarifas.index');
     }
 
     /**
@@ -65,31 +74,33 @@ class TarifaController extends Controller
      * @param  \App\tarifa  $tarifa
      * @return \Illuminate\Http\Response
      */
-    public function edit(tarifa $tarifa)
+    public function edit($id)
     {
-        //
+        $tarifa = tarifa::find($id);
+        return view('tarifas.edit', compact('tarifa'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, tarifa $tarifa)
+  
+    public function update(Request $request, $id)
     {
-        //
+        $tarifa = tarifa::find($id);
+        $tarifa->activo = true;
+        $tarifa->monto  = $request->uname;
+        $tarifa->inicio = $request->date;
+        $tarifa->final  = $request->datetwo;
+        $tarifa->rango  = $request->rango;
+        $tarifa->tipov  = $request->visitante;
+        $tarifa->save();
+        alert()->success('Tarifa', 'Actualizada');
+        return redirect()->route('tarifas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(tarifa $tarifa)
+   
+    public function destroy($id)
     {
-        //
+        $tarifa = tarifa::find($id);
+        $tarifa -> delete();
+        alert()->success('Eliminada', 'Tarifa')->persistent("Cerrar");;
+        return back();
     }
 }

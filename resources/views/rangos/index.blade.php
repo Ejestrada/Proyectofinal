@@ -10,7 +10,11 @@
       <a href="#modal2" class="modal-trigger btn-floating tooltipped btn-large waves-effect waves-light  light-blue accent-4" data-position="bottom" data-delay="50" data-tooltip="Agregar"><i class="material-icons">add</i></a>
     </div>
 </div>
+<blockquote>
+<p><strong>Note:</strong> Need to create a button element? Try the <em>button</em><br>
+ method. It has the same signature as <em>submit</em>.</p>
 
+</blockquote>
 <div class="row">
   
   <div class="col s12">

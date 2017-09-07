@@ -121,39 +121,16 @@
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div style="height: 1px;">
-          <ul class="section table-of-contents">
           
-            @yield('sections')
+          @yield('sections')
           
-          </ul>
         </div>
       </div>
     </div>
   </div>
 </main>
 
-  <footer class="page-footer light-blue darken-4">
-    <!--  <div class="container">
-        <div class="row">
-          <div class="col l4 s12">
-            <h5 class="white-text">Help </h5>
-            <p class="grey-text text-lighten-4">We hope you have enjoyed using Materialize</p>
-
-          </div>
-          <div class="col l4 s12">
-            <h5 class="white-text">Join the Discussion</h5>
-            <p class="grey-text text-lighten-4">We have a Gitter chat room set up where you</p>
-            </div>
-          <div class="col l4 s12" style="overflow: hidden;">
-            <h5 class="white-text">Connect</h5>
-              <i class="material-icons">thumb_up</i>
-            <br>
-
-            <br>
-            <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
-          </div>
-        </div>
-      </div>-->
+<footer class="page-footer light-blue darken-4">
   <div class="footer-copyright">
     <div class="container  light-blue darken-4">
       © 2017 Museo de historia de Quetzaltenango.
