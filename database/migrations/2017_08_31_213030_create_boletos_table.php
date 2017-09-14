@@ -16,12 +16,11 @@ class CreateBoletosTable extends Migration
         Schema::create('boletos', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
+            $table->float('total',8,2)->nullable();
             $table->integer('tarifa')->unsigned();
             $table->foreign('tarifa')->references('id')->on('tarifas');
-
             $table->integer('usuario')->unsigned();
             $table->foreign('usuario')->references('id')->on('users');
-
             $table->timestamps();
         });
     }

@@ -14,9 +14,9 @@
   
   <div class="row">
     <div class="col s12">
-      <div class="card">
-        <table class="highlight bordered centered responsive-table">
-          <thead class=" light-blue darken-4 white-text ">
+      <div class="card hoverable">
+        <table class="bordered centered responsive-table">
+          <thead class="light-blue darken-4 white-text ">
             <tr>
               <th>Codigo</th>
               <th>Estado</th>
@@ -46,8 +46,8 @@
                 <td>{{$r->visitante}}</td>
                 <td>
                 
-                <a class="tooltipped  btn-floating btn-small waves-effect waves-light light-blue darken-4 modal-trigger" data-position="bottom" href="" data-delay="50" data-tooltip="Editar tarifa"><i class="material-icons">edit</i></a>
-                <a class="tooltipped  btn-floating btn-small waves-effect waves-light red modal-trigger" data-position="bottom" href="#modal1" data-delay="50" data-tooltip="Eliminar tarifa"><i class="material-icons">delete</i></a>
+                <a class="tooltipped modal-trigger teal-text text-darken-1" data-position="bottom" href="" data-delay="50" data-tooltip="Editar tarifa"><i class="small material-icons">edit</i></a>
+                <a class="tooltipped modal-trigger red-text text-darken-1" data-position="bottom" href="#modal1" data-delay="50" data-tooltip="Eliminar tarifa"><i class="small material-icons">delete</i></a>
                 
                 </td>
               <form action="{{route('tarifas.destroy',$r->id)}}" method="POST">

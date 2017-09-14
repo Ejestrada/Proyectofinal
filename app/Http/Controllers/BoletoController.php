@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\boleto;
+use App\tipo_visitantes;
+use App\rango_edade;
+use App\tarifa;
 use Illuminate\Http\Request;
 
 class BoletoController extends Controller
@@ -14,8 +17,11 @@ class BoletoController extends Controller
      */
     public function index()
     {
-        //
+        $visitante = tipo_visitantes::all();
+        $rango     = rango_edade::all();
+        return view('boletos.index',['visitante'=>$visitante],['rango'=>$rango]);
     }
+    
 
     /**
      * Show the form for creating a new resource.

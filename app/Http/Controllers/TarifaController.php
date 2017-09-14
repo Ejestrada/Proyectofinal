@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class TarifaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {   $result = tarifa::join('rango_edades', 'tarifas.rango', '=', 'rango_edades.id')
         ->join('tipo_visitantes', 'tarifas.tipov', '=', 'tipo_visitantes.id')
@@ -37,12 +32,6 @@ class TarifaController extends Controller
         return view('tarifas.create',['visitante'=>$visitante],['rango'=>$rango]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $tarifa = new tarifa;
@@ -57,23 +46,11 @@ class TarifaController extends Controller
         return redirect()->route('tarifas.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(tarifa $tarifa)
+    public function show()
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $tarifa = tarifa::find($id);
@@ -103,4 +80,6 @@ class TarifaController extends Controller
         alert()->success('Eliminada', 'Tarifa')->persistent("Cerrar");;
         return back();
     }
+   
+  
 }

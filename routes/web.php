@@ -11,18 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('templates.home');
-});
-
+Route::get('/', function ()         {return view('templates.home'); });
+Route::resource('boletos','BoletoController');
 Route::resource('rangos','RangoEdadeController');
 Route::resource('visitantes','TipoVisitantesController');
-
 Route::resource('tarifas','TarifaController');
-
-Route::get('redirect',function(){
-    alert()->success('Success Message', 'Optional Title');
-    return back();
-
-});
-
