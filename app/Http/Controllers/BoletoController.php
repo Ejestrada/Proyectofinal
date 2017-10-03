@@ -19,15 +19,19 @@ class BoletoController extends Controller
     {
         $visitante = tipo_visitantes::all();
         $rango     = rango_edade::all();
-        return view('boletos.index',['visitante'=>$visitante],['rango'=>$rango]);
+        return view('boletos.index',compact('visitante','rango'));
     }
-    
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function findtarifa(Request $request,$param1,$param2)
+    {   
+        if($request->ajax()){
+            $data=tarifa::towns($param1,$param2);
+            return response()->json($data);
+        }
+        
+         return response()->json($data);
+   
+    }
+ 
     public function create()
     {
         //

@@ -16,3 +16,5 @@ Route::resource('boletos','BoletoController');
 Route::resource('rangos','RangoEdadeController');
 Route::resource('visitantes','TipoVisitantesController');
 Route::resource('tarifas','TarifaController');
+
+Route::get('/find/{param1}{param2}','BoletoController@findtarifa');

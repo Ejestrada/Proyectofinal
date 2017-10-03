@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="left"><br>
-            <h5 class="light">Rangos</h5>
+            <h5 class="light">Categoria de visitantes</h5>
             <p class="caption">Nombre actual: {{$visitante->nombre}}</p>
         </div>
         

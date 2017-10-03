@@ -139,9 +139,6 @@
   </div>
 </footer>
 
-    
-</body>
-    <!--  Scripts-->
     <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
     <script src="{{URL::asset('js/jquery-3.2.1.min.js')}}"></script>
     <script src="{{URL::asset('js/jquery.timeago.min.js')}}"></script>
@@ -150,6 +147,8 @@
     <script src="{{URL::asset('jade/search.js')}}"></script>
     <script src="{{URL::asset('bin/materialize.js')}}"></script>
     <script src="{{URL::asset('js/init.js')}}"></script>
-    
+</body>
+    <!--  Scripts-->
+   
 
 </html>
