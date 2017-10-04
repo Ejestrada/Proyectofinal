@@ -45,7 +45,18 @@ class BoletoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        if($request->ajax()){
+            $boleto = new boleto;
+            $boleto->fecha  = $request->fecha;
+            $boleto->total  = $request->total;
+            $boleto->tarifa = $request->tarifa;
+            $boleto->usuario= 1;
+            $boleto->save();
+            return response() ->json([
+              "mensaje"=>"Boleto registrado"
+            ]);
+        }
     }
 
     /**

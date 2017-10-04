@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class boleto extends Model
 {
   
-    protected $fillable = ['id','fecha','total','tarifa','usuario',];
+    protected $fillable = ['fecha','total','tarifa','usuario',];
     
 }

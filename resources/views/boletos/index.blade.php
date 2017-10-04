@@ -41,21 +41,26 @@
         </div>
         <div class="row">
           <form name="boleto">
+            <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
             <div class="input-field col s10 center-align">
               <input id="ingreso2" onKeyUp="boleteria()" type="number" class="validate" placeholder="Cantidad">
             </div>
             <div class="input-field col s10 center-align">
               <input id="ingreso3" onKeyUp="nombre()" type="text" class="validate" placeholder="Nombre">
             </div>
+            <div class="input-field col s10 center-align">
+              <input id="ingreso4" type="hidden" name="ingreso4" value="">
+            </div>
             <div class="input-field col s6 left-align">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Enviar</button>
+              
             </div>
           </form>  
+          <button id="action" class="btn waves-effect waves-light" type="submit" name="action">Enviar</button>  
         </div>
       </div>
     
     <div class="col s6 m6">
-      <div class="card z-depth-5">
+      <div class="card hoverable z-depth-2">
         <div class="card-content">
         <div class="card-image">
           <img style="margin-top:-1cm;margin-bottom:-0.5cm;" src="{{URL::asset('Images/museologo.png')}}">
@@ -66,36 +71,60 @@
         <div class="row ">
         <div class="col s6 offset-s3 divider"></div>
         </div>
-        <div class="  ">
+        
           <div class="row">
-            <div class="col s6">
-              <h5 class="light right-align">Total:</h5>
-            </div>
-            <div class="col s6">
-              <h5 class="light"><div id="resultado" name="resultado">Q. 0</div></h5>
-            </div>
+              <div class="col s6">
+                <h5 class="light right-align">Total:</h5>
+              </div>
+              <div class="col s6">
+                <h5 class="light"><div id="resultado" name="resultado">Q. 0</div></h5>
+              </div>
           </div>
           <div class="row">
-            <div class="col s6 offset-s3">
-              <h5 class="light center-align"><div id="resultado2" name="resultado2">Nombre</div></h5>
-            </div>
+              <div class="col s6 offset-s3">
+                <h5 class="light center-align"><div id="resultado2" name="resultado2">Nombre</div></h5>
+              </div>
           </div>
-          <p class="center-align">www.museodehistoriaxela.com</p>
-        <br>
-      </div>
-      </div>
+            <p class="center-align">www.museodehistoriaxela.com</p>
+          <br>
+          </div>
+      
     </div>
     
   </div>
     
-  
-
-
-
-   
-       
-
 <script type="text/javascript">
+var fecha,tarifa,usuario;
+var total = 0;
+$("#action").click(function(){
+    var dato1 = fecha;
+    var dato2 = total;
+    var dato3 = tarifa;
+    var token = $("#token").val();
+    console.log(dato1);
+    console.log(dato2);
+    console.log(dato3);
+
+    $.ajax({
+      url: '{!!URL::to('boletos')!!}',
+      headers: {'X-CSRF-TOKEN':token},
+      type: 'POST',
+      dataType: 'json',
+      data:{fecha:dato1,total:dato2,tarifa:dato3},
+
+      success:function(){
+
+        swal("Boleto Generado", "Generando boleto", "success");
+        document.boleto.ingreso2.value = "";
+        document.boleto.ingreso3.value = "";
+        document.getElementById('resultado').innerHTML ="Q. 0";
+        document.getElementById('resultado2').innerHTML="Nombre";
+
+      }
+
+    });
+  
+});
 function nombre(){
   var ingreso3 = document.boleto.ingreso3.value;
   document.getElementById('resultado2').innerHTML = ingreso3;
@@ -110,20 +139,23 @@ function boleteria()
     if (radios[i].checked) {
         
         var ingreso1 = radios[i].value;
+        var id = radios[i].id;
         
         break;
     }
   }
   var ingreso2 = document.boleto.ingreso2.value;
-  
-  console.log(ingreso1);
-  console.log(ingreso2);
+  document.boleto.ingreso4.value = id;
+  tarifa = id;
+  // console.log(ingreso1);
+  //console.log(ingreso2);
+  //console.log(id);
   try
     {
 	    ingreso1 = (isNaN(parseInt(ingreso1)))? 0 : parseInt(ingreso1);
 		  ingreso2 = (isNaN(parseInt(ingreso2)))? 0 : parseInt(ingreso2);
 		  document.getElementById('resultado').innerHTML = "Q." + ingreso1*ingreso2;
-      
+      total = ingreso1*ingreso2;
 	  }
     catch(e) {}
 
@@ -137,7 +169,7 @@ $(document).ready(function(){
   var year = currentDate.getFullYear()
   document.getElementById("date").innerHTML = (day + "/" + month + "/" + year);
   var prod_id="";
-  
+  fecha= (year + "/" + month + "/" + day);
   
 
 	$(document).on('change','.visitante',function(event){
@@ -160,9 +192,9 @@ $(document).ready(function(){
 	});
 		
 	});
-	
-    
+
 });
 
 </script>
+@include('sweet::alert')
 @endsection
