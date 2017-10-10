@@ -65,6 +65,12 @@ class BoletoController extends Controller
             $boleto->save();
 
             $dator=datoscurioso::all()->random(1);
+            $nombreD="";
+            foreach($dator as $daton)
+            {
+                $nombreD=$daton->dato;
+            }
+            
             
             try {
                 //Conector de windows para la impresora
@@ -94,9 +100,11 @@ class BoletoController extends Controller
                 $testStr = "http://museodehistoriaxela.com/";
                 $printer -> qrCode($testStr);
                 $printer -> text("-Visita nuestra página-\n");
+
+                $printer -> text("\n"."¿Sabias qué? ".$nombreD."\n");
                 $printer -> setJustification();
                 $printer -> feed();
-        
+              
         
                 $printer -> cut(); //Cortar papel
                 $printer -> close(); //Cerrar impresora
