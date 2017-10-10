@@ -20,8 +20,9 @@ class FichasTecnicasTable extends Migration
             $table->float('ancho', 8, 2)->nullable();
             $table->integer('genero')->unsigned();
             $table->foreign('genero')->references('id')->on('generos');
-            $table->integer('pieza')->unsigned();
-            $table->foreign('pieza')->references('id')->on('piezas');
+            
+            $table->integer('idpieza')->unsigned();
+            $table->foreign('idpieza')->references('id')->on('piezas');
             $table->timestamps();
         });
     }

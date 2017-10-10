@@ -63,20 +63,49 @@
           <li class="bold"><a class="collapsible-header waves-effect waves-sbx"><i class="medium material-icons  blue-grey-text text-darken-4">account_balance</i>Piezas</a>
             <div class="collapsible-body">
             <ul>
-            <li><a class="waves-effect waves-sbx" href="color.html">   Inventario         </a></li>
-            <li><a class="waves-effect waves-sbx" href="color.html">   Nueva Adquisicion  </a></li>
-            <li><a class="waves-effect waves-sbx" href="grid.html">    Editar pieza       </a></li>
-            <li><a class="waves-effect waves-sbx" href="helpers.html"> Generar Codigo QR  </a></li>
+            <li><a class="waves-effect waves-sbx" href="{{route('Pieza.index')}}">   Inventario         </a></li>
+            <li><a class="waves-effect waves-sbx" href="{{route('Pieza.create')}}">   Nueva Adquisicion  </a></li>
+            <li><a class="waves-effect waves-sbx" href="/Pieza/show">    Editar pieza       </a></li>
+            <li><a class="waves-effect waves-sbx" href="{{route('TipoPieza.index')}}"> Tipo de Pieza      </a></li>
+            <li><a class="waves-effect waves-sbx" href="{{route('Genero.index')}}">    Genero      </a></li>
+            <li><a class="waves-effect waves-sbx" href="{{route('Adquisiciones.index')}}">    Adquisiciones     </a></li>
+            <li><a class="waves-effect waves-sbx" href="{{route('TipoAdquisicion.index')}}">    Tipo de adquisiciones     </a></li>
+       
             </ul>
             </div>
           </li>
           <div class="divider"></div>
+          <li class="bold"><a class="collapsible-header waves-effect waves-sbx"><i class="medium material-icons blue-grey-text text-darken-4">android</i>Asistente</a>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a class="waves-effect waves-sbx" href="{{route('Asistente.index')}}">Listar</a></li>
 
-      <li class="bold"><a class="collapsible-header waves-effect waves-sbx"><i class="medium material-icons blue-grey-text text-darken-4">account_circle</i>Personal</a>
+
+                </ul>
+              </div>
+            </li>
+         
+            <div class="divider"></div>
+
+            <li class="bold"><a class="collapsible-header waves-effect waves-sbx"><i class="medium material-icons blue-grey-text text-darken-4">book</i>Libros</a>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a class="waves-effect waves-sbx" href="{{route('Libro.create')}}">Nuevo libro</a></li>
+                  <li><a class="waves-effect waves-sbx" href="{{route('Libro.index')}}">Listado de libros</a></li>
+                    <li><a class="waves-effect waves-sbx" href="{{route('Libro.show',0)}}">Editar libros</a></li>
+                  <li><a class="waves-effect waves-sbx" href="{{route('Editorial.index')}}">Editoriales</a></li>
+                  <li><a class="waves-effect waves-sbx" href="{{route('Autor.index')}}">Autores</a></li>
+                  <li><a class="waves-effect waves-sbx" href="{{route('Categoria.index')}}">Categorias</a></li>
+                </ul>
+              </div>
+            </li>
+            <div class="divider"></div>
+            
+        <li class="bold"><a class="collapsible-header waves-effect waves-sbx"><i class="medium material-icons blue-grey-text text-darken-4">account_circle</i>Personal</a>
         <div class="collapsible-body">
           <ul>
-          <li><a class="waves-effect waves-sbx" href="badges.html">Usuarios      </a></li>
-          <li><a class="waves-effect waves-sbx" href="badges.html">Nuevo Usuario </a></li>
+          <li><a class="waves-effect waves-sbx" href="{{route('Empleado.index')}}">Empleados     </a></li>
+          <li><a class="waves-effect waves-sbx" href="{{route('Empleado.create')}}">Nuevo empleado </a></li>
           </ul>
         </div>
       </li>

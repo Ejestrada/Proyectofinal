@@ -16,7 +16,7 @@ class CreatePiezasTable extends Migration
         Schema::create('piezas', function (Blueprint $table) {
           
             $table->increments('id');
-            $table->string('code',200);
+            $table->string('cod_pieza',200);
             $table->string('nombre',250);
             $table->boolean('activo')->default(true);
             $table->string('codigo_qr',250)->nullable();

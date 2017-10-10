@@ -17,6 +17,7 @@ class CreateFichasInformativasTable extends Migration
             $table->increments('id');
             $table->string('historia',800);
             $table->string('multimedia',500)->nullable();
+            $table->string('video',550)->nullable();
             $table->string('epoca',50)->nullable();
             $table->integer('id_pieza')->unsigned();
             $table->foreign('id_pieza')->references('id')->on('piezas');

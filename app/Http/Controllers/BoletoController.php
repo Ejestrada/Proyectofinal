@@ -7,6 +7,7 @@ use App\tipo_visitantes;
 use App\rango_edade;
 use App\tarifa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BoletoController extends Controller
 {
@@ -51,7 +52,8 @@ class BoletoController extends Controller
             $boleto->fecha  = $request->fecha;
             $boleto->total  = $request->total;
             $boleto->tarifa = $request->tarifa;
-            $boleto->usuario= 1;
+            $user = Auth::user(); //Exrae los datos del empleado logeado actualmente
+            $boleto->usuario=$user->empleado; //extrae el id del empleado
             $boleto->save();
             return response() ->json([
               "mensaje"=>"Boleto registrado"
