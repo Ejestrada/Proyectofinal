@@ -100,17 +100,20 @@ $("#action").click(function(){
     var dato1 = fecha;
     var dato2 = total;
     var dato3 = tarifa;
+    var dato4 = usuario;
     var token = $("#token").val();
     console.log(dato1);
     console.log(dato2);
     console.log(dato3);
+    console.log(dato4);
+    
 
     $.ajax({
       url: '{!!URL::to('boletos')!!}',
       headers: {'X-CSRF-TOKEN':token},
       type: 'POST',
       dataType: 'json',
-      data:{fecha:dato1,total:dato2,tarifa:dato3},
+      data:{fecha:dato1,total:dato2,tarifa:dato3,nombre:dato4},
 
       success:function(){
 
@@ -127,6 +130,7 @@ $("#action").click(function(){
 });
 function nombre(){
   var ingreso3 = document.boleto.ingreso3.value;
+  usuario = ingreso3;
   document.getElementById('resultado2').innerHTML = ingreso3;
 
 }

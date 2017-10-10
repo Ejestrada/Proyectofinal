@@ -8,6 +8,12 @@ use App\rango_edade;
 use App\tarifa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\EscposImage;
+use Mike42\Escpos;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use App\datoscurioso;
+use Illuminate\Support\Facades\DB;
 
 class BoletoController extends Controller
 {
@@ -51,14 +57,59 @@ class BoletoController extends Controller
             $boleto = new boleto;
             $boleto->fecha  = $request->fecha;
             $boleto->total  = $request->total;
+            $totales = $request->total;
             $boleto->tarifa = $request->tarifa;
+            $nombre = $request->nombre;
             $user = Auth::user(); //Exrae los datos del empleado logeado actualmente
             $boleto->usuario=$user->empleado; //extrae el id del empleado
             $boleto->save();
-            return response() ->json([
-              "mensaje"=>"Boleto registrado"
+
+            $dator=datoscurioso::all()->random(1);
+            
+            try {
+                //Conector de windows para la impresora
+                $connector = new WindowsPrintConnector("EPSON20");
+                $printer = new Printer($connector); //se declara una nueva impresora que recibe el conector windows
+        
+                function title($printer, $str) {
+                    $printer -> selectPrintMode(Printer::MODE_DOUBLE_HEIGHT | Printer::MODE_DOUBLE_WIDTH);
+                    $printer -> text($str);
+                    $printer -> selectPrintMode();
+                }
+        
+                                
+                $fecha = date ('d-m-Y');
+               
+        
+                $img = EscposImage::load("../public/images/LogoBoleto.png");
+                $printer -> graphics($img);
+                $printer -> setJustification(Printer::JUSTIFY_CENTER);
+                $printer -> text("\n".$fecha."\n");
+                $printer -> text("_______________________________________\n");
+                title($printer,"\nBienvenido ".$nombre. "\n");
+        
+                
+                title($printer, "\n Total Q.".$totales."\n \n");
+                //QR pequeño en el centro
+                $testStr = "http://museodehistoriaxela.com/";
+                $printer -> qrCode($testStr);
+                $printer -> text("-Visita nuestra página-\n");
+                $printer -> setJustification();
+                $printer -> feed();
+        
+        
+                $printer -> cut(); //Cortar papel
+                $printer -> close(); //Cerrar impresora
+        
+              } catch (Exception $e) {
+                echo "Couldn't print to this printer: " . $e -> getMessage() . "\n";
+              }
+              return response() ->json([
+                "mensaje"=>"Boleto registrado"
             ]);
+
         }
+        
     }
 
     /**

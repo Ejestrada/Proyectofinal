@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function ()         {return view('templates.home'); });
+Route::get('/loginperra', function ()         {return view('templates.login'); });    
+
+Route::group(['middleware' => ['auth']], function () {
+
+Route::get('/', function ()         {return view('templates.home'); });    
+
 Route::resource('boletos','BoletoController');
 Route::resource('rangos','RangoEdadeController');
 Route::resource('visitantes','TipoVisitantesController');
@@ -34,6 +39,10 @@ Route::resource('/Rol','RoleController');
 Route::resource('/PDF','PDF2Controller');
 Route::resource('/FichaInformativa','FichasInformativaController');
 Route::resource('/Boleto','TestBoletoController');
+Route::resource('Evento','EventoController');
+Route::resource('DatoCurioso','DatoscuriosoController');
+
+Route::get('Random','DatoscuriosoController@ran');
 
 Route::get('/buscardon','AdquisicioneController@search');
 
@@ -44,7 +53,10 @@ Route::group(['prefix' => '/asistente'], function () {
     Route::get('/ficha/{id}', 'AsistenteController@ficha');
 });
 
-Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+});
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
