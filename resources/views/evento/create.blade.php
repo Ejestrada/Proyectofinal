@@ -38,32 +38,21 @@
 
           <div class="row">
             <div class="input-field col s6">
-            <i class="material-icons prefix">date_range</i>
-			<input name="fechai" type="text" class="datepicker">
-              
-              @if ($errors->has('fechai'))
-                  <span class="help-block" style="color:red;">
-                      <strong>{{ $errors->first('fechai') }}</strong>
-                  </span>
-              @endif
-              <label for="fechao">Fecha inicial</label>
+                <i class="material-icons prefix">date_range</i>
+                <input name="fechai" type="text" class="datepicker">
+                <label for="dateone">Fecha inicial</label>
             </div>
             <div class="input-field col s6">
-            <i class="material-icons prefix">date_range</i>
-			<input name="fechaf" type="text" class="datepicker">
-			          
-              
-              @if ($errors->has('fechaf'))
-                  <span class="help-block" style="color:red;">
-                      <strong>{{ $errors->first('fechaf') }}</strong>
-                  </span>
-              @endif
-              <label for="fechaf" >Fecha final</label>
+                <i class="material-icons prefix">date_range</i>
+                <input name="fechaf" type="text" class="datepicker">
+                <label for="dateone">Fecha final</label>
+            </div>
             </div>
 
             <p class="center-align">
-              <button class="waves-effect waves-light btn"  type="submit"><i class="material-icons right">send</i>enviar</button>
+              <button class="waves-effect waves-light btn"    type="submit"><i class="material-icons right">send</i>enviar</button>
            </p>
+        <input hidden="hidden" type="Reset" type="reset" value="Clear form">
           </div>
         </form>
         </div>

@@ -56,12 +56,12 @@ class DatoscuriosoController extends Controller
              if ($mes!="Ingreso correcto")
               {
                alert()->error(''.$mes.'', 'Error');
-               return redirect('datocurioso');
+               return redirect('DatoCurioso');
              }
              else
              {
                alert()-> success(''.$mes.'','Dato Curioso');
-              return redirect('datocurioso');
+              return redirect('DatoCurioso');
              }
 
     }
@@ -102,7 +102,7 @@ class DatoscuriosoController extends Controller
        $dato->dato = $request->dato;
        $dato->save();
        alert()->success('Transaccion', 'Registro Exitoso');
-      return redirect('datocurioso');
+      return redirect('DatoCurioso');
     }
 
     /**

@@ -17,7 +17,7 @@ class MDAdministrador
     {
         if (\Auth::user()->rol!=1)
         {
-         return new Response(view('MensajeError.Error')->with('msj','No tiene privilegios como secre'));
+         return new Response(view('mensajeerror.Error')->with('msj','No tiene privilegios como secre'));
         }
    
         return $next($request);

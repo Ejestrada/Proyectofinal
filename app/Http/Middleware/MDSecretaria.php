@@ -17,7 +17,7 @@ class MDSecretaria
     {
         if (\Auth::user()->rol!=2)
         {
-         return new Response(view('MensajeError.Error')->with('msj','No tiene privilegios como secre'));
+         return new Response(view('mensajeerror.Error')->with('msj','No tiene privilegios como secre'));
         }
         return $next($request);
     }

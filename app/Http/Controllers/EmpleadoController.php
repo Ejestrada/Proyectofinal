@@ -70,7 +70,7 @@ class EmpleadoController extends Controller
         //
     }
 
-    public function edit(empleado $empleado)
+    public function edit( $empleado)
     {
         $usuario = user::where('empleado', $empleado)->first();
         $empleado = empleado::findOrFail($empleado);
@@ -79,7 +79,7 @@ class EmpleadoController extends Controller
         return view('Empleado/edit',compact('empleado','usuario','roles'));
     }
 
-    public function update(Request $request, empleado $empleado)
+    public function update(Request $request,  $empleado)
     {
         $usuario=user::findOrFail($request->idusuario);
         $usuario->name=$request->usuario;
@@ -100,7 +100,7 @@ class EmpleadoController extends Controller
         return redirect('Empleado');
     }
 
-    public function destroy(empleado $empleado)
+    public function destroy( $empleado)
     {
         $user = user::findOrFail($request->idusuario);
         $user->delete();

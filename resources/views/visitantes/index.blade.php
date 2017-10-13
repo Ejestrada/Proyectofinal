@@ -63,13 +63,13 @@
 <div id="modal2" class="modal">
   <div class="modal-content">
     <h4 class="center-align">Categoria de Visitantes</h4>
-    <form class="col s12" method="POST" action="{{route('visitantes.store')}}">
+    <form class="col s12" method="POST" action="{{route('visitantes.store')}}" id="formValidate">
       {{ csrf_field() }}
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">group_add</i>
-          <input name="uname" id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Nombre</label>
+          <input name="uname" id="icon_prefix" type="text" class="required">
+          <label for="icon_prefix" > Nombre</label>
         </div>
         <div class="input-field col s12 center-align">
           <button class="btn waves-effect waves-light  light-blue accent-4" type="submit" name="action">Agregar</button>

@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/loginperra', function ()         {return view('templates.login'); });    
-
 Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/', function ()         {return view('templates.home'); });    
