@@ -83,8 +83,15 @@
 
 
     
-</div></div>
+</div>
 <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
 @include('sweet::alert')
 @endsection
+@section('sections')
+  <div class="center">
+    <i class="medium material-icons">account_balance</i>
+    <p><strong>Categorias:</strong><br> Grado jerarquico dentro de un orden, en base a los visitantes.</p>
+  </div>
+@endsection
+
 
