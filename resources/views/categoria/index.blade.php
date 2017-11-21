@@ -29,7 +29,7 @@
               <tr>
                 <td>{{$r->id}}</td>
                 <td>{{$r->nombre}}</td>
-                <td>
+                <td class="right">
                 <a class="tooltipped  btn-floating btn-small waves-effect waves-light light-blue darken-4 modal-trigger" data-position="bottom" href="{{route('Categoria.edit',$r->id)}}" data-delay="50" data-tooltip="Editar categoria"><i class="material-icons">edit</i></a>
                 <a class="tooltipped  btn-floating btn-small waves-effect waves-light red modal-trigger" data-position="bottom" href="#modal{{$r->id}}" data-delay="50" data-tooltip="Eliminar categoria"><i class="material-icons">delete</i></a>
                 </td>
@@ -57,7 +57,7 @@
   </div>
 
 @endif
-    <form action="{{route('Categoria.store')}}" method="POST">
+    <form id="formValidate" action="{{route('Categoria.store')}}" method="POST">
       {{ csrf_field() }}
           <div id="modalcreate" class="modal">
             <div class="modal-content">
@@ -68,14 +68,14 @@
               </div>
 
               <div class="row"> <!-- INFORMACION GENERAL PIEZA -->
-                <div class="input-field col s5 offset-s3">
+                <div class="input-field col s12 center">
                   <i class="material-icons prefix">mode_edit</i>
-                  <input id="" name="categoria" type="text" value="">
+                  <input id="" name="categoria" type="text" class="required">
                   <label for="uname">Nombre de categoria</label>
                 </div>
                 <div class="input-field col s12 center">
-                  <button class="btn light-blue waves-effect waves-light center" type="submit" name="action">
-                    <i class="material-icons right">send</i>Agregar
+                  <button class="btn waves-effect waves-light  light-blue darken-4 center" type="submit" name="action">
+                    Agregar
                   </button>
                 </div>
               </div>
@@ -93,9 +93,10 @@
 @include('sweet::alert')
 @endsection
 
-@section('section')
+@section('sections')
   <div class="center">
     <i class="medium material-icons">library_books</i>
-    <p><strong>Categoria:</strong>es una division para poder distingir a que rama educativa pertenece el libro. Ej: <em>Matematica, Historia, Fisica</em></p>
+    <p><strong>Categoria:</strong><br> 
+    Division para poder distingir a que rama educativa pertenece el libro. Ej: <em>Matematica, Historia, Fisica</em></p>
   </div>
 @endsection

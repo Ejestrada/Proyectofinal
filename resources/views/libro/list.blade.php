@@ -14,7 +14,7 @@
     <div class="col s12">
       <div class="card">
         <table class="highlight bordered centered responsive-table">
-          <thead class=" light-blue darken-4 white-text ">
+        <thead class="blue accent-3 white-text">
             <tr>
               <th>Codigo</th>
               <th>Nombre libro</th>

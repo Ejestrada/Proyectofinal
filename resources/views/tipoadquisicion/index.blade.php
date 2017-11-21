@@ -65,15 +65,13 @@
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s5 offset-s3">
+              <div class="input-field col s12 center">
                 <i class="material-icons prefix">perm_identity</i>
                 <input id="icon_prefix" type="text"  name="uname"  class="required">
                 <label for="icon_prefix">Nombre</label>
               </div>
               <div class="input-field col s12 center">
-                <button class="btn light-blue waves-effect waves-light center" type="submit" name="action">
-                  <i class="material-icons right">send</i>Agregar
-                </button>
+              <button class="btn waves-effect waves-light  light-blue darken-4" type="submit" name="action">Registrar</button>
               </div>
             </div>
           </div>
@@ -85,5 +83,5 @@
 </div>
 
   <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
-    @include('sweet::alert')
+  @include('sweet::alert')
 @endsection

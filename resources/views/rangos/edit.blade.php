@@ -18,16 +18,16 @@
 
     <div class="row">
     
-    <form method="POST" action="{{route('rangos.update',$rango->id)}}">
+    <form id="formValidate" method="POST" action="{{route('rangos.update',$rango->id)}}">
     <input name="_method" type="hidden" value="PUT">
         {!! csrf_field() !!}  
         <div class="row">
         <div class="input-field col s6">
-          <input placeholder="{{$rango->nombre}}" id="first_name" name="name" type="text" class="validate">
+          <input value="{{$rango->nombre}}" id="first_name" autocomplete="off" name="name" type="text" class="required">
           <label for="first_name">Nombre</label>
         </div>
         <div class="input-field col s6">
-        <button class="btn waves-effect waves-light  light-blue accent-4" type="submit" name="action">Actualizar</button>
+        <button class="btn waves-effect waves-light  light-blue darken-4" type="submit" name="action">Actualizar</button>
         </div>
         </div>
         </form>

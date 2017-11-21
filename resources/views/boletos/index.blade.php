@@ -42,7 +42,7 @@
           <form name="boleto">
             <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
             <div class="input-field col s10 center-align">
-              <input id="ingreso2" onKeyUp="boleteria()" type="number" class="validate" placeholder="Cantidad">
+              <input value="1" type="hidden" id="ingreso2" onKeyUp="boleteria()" type="number" class="validate" placeholder="Cantidad">
             </div>
             <div class="input-field col s10 center-align">
               <input id="ingreso3" onKeyUp="nombre()" type="text" class="validate" placeholder="Nombre">

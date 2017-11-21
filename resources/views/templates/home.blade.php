@@ -10,14 +10,14 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="theme-color" content="#1b5a6b">
-    
+
     <link rel="icon" href="{{URL::asset('Images/mphoto.png')}}" sizes="32x32">
     <link href="{{URL::asset('css/prism.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/sweetalert.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/ghpages-materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
     <style media="screen">
       .waves-effect.waves-sbx .waves-ripple {background-color: rgba(2, 86, 156, 1);}
       body {display: flex;min-height: 100vh;flex-direction: column;}
@@ -112,7 +112,7 @@
     </ul>
 
 
-          
+
 
     <nav class="top-nav light-blue darken-4">
       <div class="container">
@@ -193,7 +193,7 @@
             </ul>
           </div>
         </li>
-         
+
             <div class="divider"></div>
             <li class="bold"><a class="collapsible-header  waves-effect waves-sbx"><i class="medium material-icons  blue-grey-text text-darken-4">theaters</i>Datos Curiosos</a>
               <div class="collapsible-body">
@@ -253,13 +253,13 @@
                   <li><a class="waves-effect waves-sbx" href="{{route('Autor.index')}}">Autores</a></li>
                   <li><a class="waves-effect waves-sbx" href="{{route('Categoria.index')}}">Categorias</a></li>
                   @endif
-                
-                
+
+
                 </ul>
               </div>
             </li>
             <div class="divider"></div>
-            
+
         <li class="bold"><a class="collapsible-header waves-effect waves-sbx"><i class="medium material-icons blue-grey-text text-darken-4">account_circle</i>Personal</a>
         <div class="collapsible-body">
           <ul>
@@ -283,7 +283,7 @@
         <div class="collapsible-body">
           <ul>
           @if (Auth::user()->rol === 1)
-          <li><a class="waves-effect waves-sbx" href="{{url('/tarifas')}}">Tarifas</a></li>
+          <li><a class="waves-effect waves-sbx" href="{{url('/tarifas')}}">boleos</a></li>
           <li><a class="waves-effect waves-sbx" href="{{url('/visitantes')}}">Categorias</a></li>
           <li><a class="waves-effect waves-sbx" href="{{url('/rangos')}}">Rangos</a></li>
           @elseif (Auth::user()->rol=== 2)
@@ -294,6 +294,7 @@
           <li><a class="waves-effect waves-sbx" href="{{url('/tarifas')}}">Tarifas</a></li>
           <li><a class="waves-effect waves-sbx" href="{{url('/visitantes')}}">Categorias</a></li>
           <li><a class="waves-effect waves-sbx" href="{{url('/rangos')}}">Rangos</a></li>
+
           @elseif (Auth::user()->rol=== 4)
           @endif
           </ul>
@@ -329,7 +330,7 @@
   <div class="row">
     <div class="col s12 m9 l10">
       <div class="section scrollspy">
-        
+
         @yield('content')
 
       </div>
@@ -338,9 +339,9 @@
     <div class="col hide-on-small-only m3 l2">
       <div class="toc-wrapper">
         <div style="height: 1px;">
-          
+
           @yield('sections')
-          
+
         </div>
       </div>
     </div>
@@ -368,6 +369,6 @@
     <script src="{{URL::asset('js/init.js')}}"></script>
 </body>
     <!--  Scripts-->
-   
+
 
 </html>

@@ -52,9 +52,12 @@ class TarifaController extends Controller
     }
 
     public function edit($id)
-    {
+    {   
+        $visitante = tipo_visitantes::all();
+        $rango     = rango_edade::all();
         $tarifa = tarifa::find($id);
-        return view('tarifas.edit', compact('tarifa'));
+        return view('tarifas.edit',compact('tarifa','rango','visitante'));
+        
     }
 
   
@@ -68,8 +71,19 @@ class TarifaController extends Controller
         $tarifa->rango  = $request->rango;
         $tarifa->tipov  = $request->visitante;
         $tarifa->save();
-        alert()->success('Tarifa', 'Actualizada');
-        return redirect()->route('tarifas.index');
+        
+        if($tarifa)
+        {
+            alert()->success('Actualizada', 'Tarifa')->persistent("Cerrar");
+            return redirect()->route('tarifas.index');
+            
+        }
+        else{
+            return redirect()->route('tarifas.index');
+        }
+        
+       
+        
     }
 
    
@@ -77,7 +91,7 @@ class TarifaController extends Controller
     {
         $tarifa = tarifa::find($id);
         $tarifa -> delete();
-        alert()->success('Eliminada', 'Tarifa')->persistent("Cerrar");;
+        alert()->success('Eliminada', 'Tarifa')->persistent("Cerrar");
         return back();
     }
    

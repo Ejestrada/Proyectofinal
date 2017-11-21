@@ -11,9 +11,18 @@
 |
 */
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth']], function () { #Rutas para la página informativa
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', 'Pagina@index');
+    Route::post('/conctacto', 'Pagina@contact');
+    Route::get('/team', function() { return view('pagina.desarrolladores'); });
+    Route::get('/ferrocarril', function() { return view('pagina.ferrocarril'); });
+    Route::get('/presidentes', function() { return view('pagina.presidentes'); });
+    Route::get('/administracion', function() { return view('pagina.equipo'); });
+    Route::get('/contacto', function() { return view('pagina.contacto'); });
 
-Route::get('/', function ()         {return view('templates.home'); });    
+    Route::get('/ficha/{id}', 'AsistenteController@ficha');
+});
 
 Route::resource('boletos','BoletoController');
 Route::resource('rangos','RangoEdadeController');
@@ -21,7 +30,6 @@ Route::resource('visitantes','TipoVisitantesController');
 Route::resource('tarifas','TarifaController');
 
 Route::get('/find/{param1}{param2}','BoletoController@findtarifa');
-
 Route::resource('/Pieza','PiezaController');
 Route::resource('/TipoPieza','TipoPiezaController');
 Route::resource('/Genero','GeneroController');
@@ -56,5 +64,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Auth::routes();
-
-

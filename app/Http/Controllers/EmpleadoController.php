@@ -100,9 +100,9 @@ class EmpleadoController extends Controller
         return redirect('Empleado');
     }
 
-    public function destroy( $empleado)
+    public function destroy($empleado)
     {
-        $user = user::findOrFail($request->idusuario);
+        $user = user::findOrFail($empleado);
         $user->delete();
     
         $empleadod = empleado::findOrFail($empleado);

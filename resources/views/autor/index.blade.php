@@ -16,7 +16,7 @@
     <div class="col s12">
       <div class="card">
         <table class="highlight bordered centered responsive-table">
-          <thead class=" light-blue darken-4 white-text ">
+        <thead class="blue accent-3 white-text">
             <tr>
               <th>Codigo</th>
               <th>Nombre autor</th>
@@ -59,7 +59,7 @@
   </div>
 
 @endif
-    <form action="{{route('Autor.store')}}" method="POST">
+    <form id="formValidate" action="{{route('Autor.store')}}" method="POST">
       {{ csrf_field() }}
           <div id="modalcreate" class="modal">
             <div class="modal-content">
@@ -70,20 +70,20 @@
               </div>
 
               <div class="row">
-                <div class="input-field col s4">
-                  <i class="material-icons prefix">mode_edit</i>
-                  <input id="" name="autor" type="text" value="">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">mode_edit </i><br>
+                  <input id="" name="autor" type="text" class="required" data-length="30">
                   <label for="uname">Nombre de autor</label>
                 </div>
                 <div class="input-field col s12">
                  <i class="material-icons prefix">description</i>
-                  <textarea name="bibliografia" class="materialize-textarea" length="120"></textarea>
+                  <textarea name="bibliografia" class="materialize-textarea required" data-length="120"></textarea>
                   <label for="bibliografia">Bibliografia</label>
-                <span  style="float: right; font-size: 12px; height: 1px;"></span>
+               
                 </div>
                 <div class="input-field col s12 center">
-                  <button class="btn light-blue waves-effect waves-light center" type="submit" name="action">
-                    <i class="material-icons right">send</i>Agregar
+                  <button class="btn light-blue waves-effect waves-light  light-blue darken-4 center" type="submit" name="action">
+                    Agregar
                   </button>
                 </div>
               </div>
@@ -101,9 +101,9 @@
 @include('sweet::alert')
 @endsection
 
-@section('section')
+@section('sections')
   <div class="center">
     <i class="medium material-icons">library_books</i>
-    <p><strong>Categoria:</strong>es una division para poder distingir a que rama educativa pertenece el libro. Ej: <em>Matematica, Historia, Fisica</em></p>
-  </div>
+    <p><strong>Autores:</strong><br>
+    Persona que crea una obra, sea artística, literaria o científica.</div>
 @endsection

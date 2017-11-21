@@ -8,7 +8,7 @@
       <h5 class="light text-light-blue text-darken-4">Tarifas</h5>
     </div>
     <div class="right"><br>
-      <a href="{{ url('tarifas/create')}}" class="modal-trigger btn-floating tooltipped btn-large waves-effect waves-light  light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Agregar"><i class="material-icons">add</i></a>
+      <a href="{{route('tarifas.create')}}" class="modal-trigger btn-floating tooltipped btn-large waves-effect waves-light  light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Agregar"><i class="material-icons">add</i></a>
     </div>
   </div>
   
@@ -16,7 +16,7 @@
     <div class="col s12">
       <div class="card hoverable">
         <table class="bordered centered responsive-table">
-          <thead class="light-blue darken-4 white-text ">
+          <thead class="light-blue darken-1 white-text">
             <tr>
               <th>Codigo</th>
               <th>Estado</th>
@@ -46,9 +46,9 @@
                 <td>{{$r->visitante}}</td>
                 <td>
                 
-                <a class="tooltipped modal-trigger teal-text text-darken-1" data-position="bottom" href="" data-delay="50" data-tooltip="Editar tarifa"><i class="small material-icons">edit</i></a>
-                <a class="tooltipped modal-trigger red-text text-darken-1" data-position="bottom" href="#modal1" data-delay="50" data-tooltip="Eliminar tarifa"><i class="small material-icons">delete</i></a>
-                
+                <a class="tooltipped  btn-floating btn-small waves-effect waves-light light-blue darken-4" data-position="bottom"  href="{{route('tarifas.edit',$r->id)}}" data-delay="50" data-tooltip="Editar tipo"><i class="material-icons">edit</i></a>
+                <a class="tooltipped  btn-floating btn-small waves-effect waves-light red modal-trigger"   data-position="bottom" href="#modal1" data-delay="50" data-tooltip="Eliminar tipo"><i class="material-icons">delete</i></a>
+              
                 </td>
               <form action="{{route('tarifas.destroy',$r->id)}}" method="POST">
                 {{csrf_field()}}
@@ -82,6 +82,7 @@
 @section('sections')
   <div class="center">
     <i class="medium material-icons">account_balance</i>
-    <p><strong>Tarifa:</strong>Tabla de precios, derechos o tasas de un servicio.</p>
+    <p><strong>Tarifa:</strong><br>
+     Tabla de precios, derechos o tasas de un servicio.</p>
   </div>
 @endsection

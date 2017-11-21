@@ -16,7 +16,7 @@
     <div class="col s12">
       <div class="card">
         <table class="highlight bordered centered responsive-table">
-          <thead class=" light-blue darken-4 white-text ">
+          <thead class="blue accent-3 white-text">
             <tr>
               <th>Codigo</th>
               <th>Editorial</th>
@@ -67,14 +67,14 @@
                 </div>
               </div>
               <div class="row"> <!-- INFORMACION GENERAL PIEZA -->
-                <div class="input-field col s5 offset-s3">
+                <div class="input-field col s12">
                   <i class="material-icons prefix">mode_edit</i>
                   <input id="" name="nombreeditorial" type="text" class="required">
                   <label for="uname">Nombre de la editorial</label>
                 </div>
                 <div class="input-field col s12 center">
-                  <button class="btn light-blue waves-effect waves-light center" type="submit" name="action">
-                    <i class="material-icons right">send</i>Agregar
+                  <button class="btn wwaves-effect waves-light  light-blue darken-4 center" type="submit" name="action">
+                    Agregar
                   </button>
                 </div>
               </div>
@@ -92,9 +92,10 @@
 @include('sweet::alert')
 @endsection
 
-@section('section')
+@section('sections')
   <div class="center">
     <i class="medium material-icons">bookmark_border</i>
-    <p><strong>Editorial:</strong>Empresa que se dedica a editar libros y otras publicaciones por medio de la imprenta u otros procedimientos de reproducción.</p>
+    <p><strong>Editorial:</strong><br>
+     Empresa que se dedica a editar libros y otras publicaciones por medio de la imprenta u otros procedimientos de reproducción.</p>
   </div>
 @endsection

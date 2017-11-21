@@ -1,31 +1,41 @@
 @extends('templates.home')
-@section('content')
-  <div class="row scrollspy ">
-   <div class="col s12 m12 l12">
-   <div class="card-panel">
-   <h3 class="center-align">Listado Eventos</h3>
-   <a href="{{route('Evento.create')}}" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">add</i></a>
+  @section('content')
 
-      <table class="highlight">
-        <thead>
-          <tr>
-              <th>Nombre</th>
-              <th>Descripcion</th>
-              <th>Fecha inicial</th>
-              <th>Fecha final</th>
-              <th>Activo</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div class="container">
 
-            @foreach ($eventos as $evento)
+      <div class="row">
+        <div class="left"><br>
+          <h5 class="light">Eventos</h5>
+        </div>
+
+        <div class="right"><br>
+          <a href="{{route('Evento.create')}}" class="modal-trigger btn-floating tooltipped btn-large waves-effect waves-light  light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Agregar"><i class="material-icons">add</i></a>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card hoverable z-depth-2">
+          <table class="centered highlight responsive-table">
+            <thead class="light-blue darken-1 white-text">
+              <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Fecha Inicial</th>
+                <th>Fecha Final</th>
+                <th>Activo</th>
+                <th></th>
+              </tr>
+            </thead>
+          <tbody>
+          @foreach ($eventos as $evento)
             <tr>
             <td>{{$evento->nombre}}</td>
             <td>{{$evento->descripcion}}</td>
             <td>{{$evento->fecha_inicial}}</td>
             <td>{{$evento->fecha_final}}</td>
             <td>
-              @if ($evento->activo === 1)
+              @if ($evento->activo == 1)
               <div class="switch">
                  <label>
                    Off
@@ -46,12 +56,12 @@
                </div>
               @endif
 
-            <td>
-             <a class="modal-trigger" href="#modal{{$evento->id}}"><span class="new badge red"  data-badge-caption="Eliminar"></span></a>
-              <a href="{{route('Evento.edit',$evento->id)}}" ><span class="new badge blue" data-badge-caption="Editar"></span></a>
             </td>
+            <td>
+              <a class="tooltipped  btn-floating btn-small waves-effect waves-light light-blue darken-4" data-position="bottom"  href="{{route('Evento.edit',$evento->id)}}" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+              <a class="tooltipped  btn-floating btn-small waves-effect waves-light red modal-trigger"   data-position="bottom" href="#modal{{$evento->id}}" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+           </td>
             </tr>
-
             <form action="{{route('Evento.destroy',$evento->id)}}" method="POST">
               {{csrf_field()}}
               {{ method_field('DELETE') }}
@@ -68,13 +78,15 @@
                   </div>
             </form>
             @endforeach
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+    
+</div>
 
-        </tbody>
-      </table>
-
-  </div>
-  </div>
-  </div>
+  
 
 <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
   @include('sweet::alert')
@@ -89,4 +101,11 @@
   else {mostrar();}
   }
   </script>
+@endsection
+@section('sections')
+  <div class="center">
+    <i class="medium material-icons">account_balance</i>
+    <p><strong>Eventos:</strong><br>
+    Acontecimientos, especialmente si son de cierta importancia.</p>
+  </div>
 @endsection
